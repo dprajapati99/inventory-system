@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "name": "yshvi boricha ",
+      "description": "be brave ",
+      "Status": "Inactive",
+      "id": 4
+    },
+    {
+      "name": "vaibhu",
+      "description": "ypu. are art ",
+      "Status": "Inactive",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "name": "yshvi boricha ",
+      "description": "you are art ",
+      "price": "20",
+      "category": "Food",
+      "Status": "Inactive",
+      "id": 3
+    },
+    {
+      "name": "zarna ",
+      "description": "unique name",
+      "price": "1000",
+      "category": "Art",
+      "Status": "Inactive",
+      "id": 4
+    },
+    {
+      "name": "navya",
+      "description": "ypu. are art ",
+      "price": "23",
+      "category": "Fashion",
+      "Status": "Active",
+      "id": 5
+    }
+  ],
+  "profile": []
+}

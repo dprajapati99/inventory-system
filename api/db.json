@@ -1,35 +1,41 @@
 {
   "posts": [
     {
-      "name": "yshvi boricha ",
-      "description": "be brave ",
-      "Status": "Inactive",
-      "id": 4
-    },
-    {
-      "name": "vaibhu",
+      "name": "art",
       "description": "ypu. are art ",
-      "Status": "Inactive",
-      "id": 5
+      "Status": "Active",
+      "id": 7
     },
     {
-      "name": "zarni",
-      "description": "unique",
+      "name": "beggy jense",
+      "description": "comfortable",
       "Status": "Inactive",
-      "id": 6
+      "id": 8
+    },
+    {
+      "name": "burger",
+      "description": "mcd",
+      "Status": "Inactive",
+      "id": 9
+    },
+    {
+      "name": "french fries",
+      "description": "with peri peri",
+      "Status": "Active",
+      "id": 10
     }
   ],
   "comments": [
     {
-      "name": "yshvi boricha ",
+      "name": " burger",
       "description": "you are art ",
       "price": "20",
       "category": "Food",
-      "Status": "Inactive",
+      "Status": "Active",
       "id": 3
     },
     {
-      "name": "zarna ",
+      "name": "brand ",
       "description": "unique name",
       "price": "1000",
       "category": "Art",
@@ -38,11 +44,35 @@
     },
     {
       "name": "navya",
-      "description": "ypu. are art ",
+      "description": "skin care",
       "price": "23",
       "category": "Fashion",
       "Status": "Active",
       "id": 5
+    },
+    {
+      "name": "art",
+      "description": "sdhjsdhf",
+      "price": "400",
+      "category": "Fashion",
+      "Status": "Active",
+      "id": 6
+    },
+    {
+      "name": "art",
+      "description": "ferkjcg",
+      "price": "466",
+      "category": "Fashion",
+      "Status": "Active",
+      "id": 7
+    },
+    {
+      "name": "hoodie",
+      "description": "comfy",
+      "price": "799",
+      "category": "Fashion",
+      "Status": "Active",
+      "id": 8
     }
   ],
   "profile": []

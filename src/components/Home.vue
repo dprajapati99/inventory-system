@@ -14,56 +14,12 @@
             <a class="nav-link" href="#">about</a>
           </li>
           <li class="nav-item">
-            <div class="dropdown show">
-              <a
-                class="btn btn-secondary dropdown-toggle"
-                href="#"
-                id="dropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style="margin: 5px"
-              >
-                Items
-              </a>
-
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item"
-                  ><router-link to="/Additems">Additems</router-link></a
-                >
-                <a class="dropdown-item"
-                  ><router-link to="/Showitems">Showitems</router-link></a
-                >
-              </div>
-            </div>
+               <a class="nav-link" href="#"> <router-link to="/additems">Additems</router-link></a>
+         
           </li>
 
           <li class="nav-item">
-            <div class="dropdown show">
-              <a
-                class="btn btn-secondary dropdown-toggle"
-                href="#"
-                role="button"
-                id="dropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style="margin: 5px"
-              >
-                Category
-              </a>
-
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item"
-                  ><router-link to="/Addcategory">Addcategory</router-link></a
-                >
-                <a class="dropdown-item"
-                  ><router-link to="/Showcategories"
-                    >Showcategories</router-link
-                  ></a
-                >
-              </div>
-            </div>
+           <a class="nav-link" href="#">  <router-link to="/addcategory">Addcategory</router-link></a>
           </li>
         </ul>
       </div>
@@ -87,7 +43,7 @@
             <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
             <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
           </svg>
-          <span><router-link to="/Additems">START HERE </router-link></span>
+          <span><router-link to="/additems">START HERE </router-link></span>
         </button>
       </h1>
     </div>
@@ -98,6 +54,9 @@
 export default {};
 </script>
 <style scoped>
+.navbar{
+  height: 7%;
+}
 .text {
   font-size: 20px;
   text-align: center;

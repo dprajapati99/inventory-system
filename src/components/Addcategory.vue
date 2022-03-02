@@ -6,40 +6,20 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              ><router-link to="/Home">Home</router-link></a
+              ><router-link to="/home">Home</router-link></a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">about</a>
           </li>
           <li class="nav-item">
-            <div class="dropdown show">
-              <a
-                class="btn btn-secondary dropdown-toggle"
-                href="#"
-                role="button"
-                id="dropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style="margin: 5px"
-              >
-                Items
-              </a>
-
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item"
-                  ><router-link to="/Additems">Additems</router-link></a
-                >
-                <a class="dropdown-item"
-                  ><router-link to="/Showitems">Showitems</router-link></a
-                >
-              </div>
-            </div>
+            <a class="nav-link" href="#">
+              <router-link to="/additems">Additems</router-link></a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link"
-              ><router-link to="/Showcategories">Showcategories</router-link></a
+              ><router-link to="/showcategories">Showcategories</router-link></a
             >
           </li>
         </ul>
@@ -53,14 +33,15 @@
         height: 93vh;
       "
     >
-    <!-- FORM FOR ADD NEW CATEGORY -->
+      <!-- FORM FOR ADD NEW CATEGORY -->
       <div class="container">
         <h3>Add New Category</h3>
-        <form method="post">
+        
+        <form  @submit.prevent="addcategories()" >
           <div class="form-group">
             <label for="Name">Name</label>
             <input
-              type="name"
+              type="text"
               class="form-control-left"
               id="Name"
               placeholder="Name"
@@ -70,9 +51,9 @@
           </div>
 
           <div class="form-group">
-            <label for=" Email1msg">Description:</label>
+          <label for="description">Description:</label>
             <input
-              type="textarea"
+              type="textarea"  maxlength="50"
               class="form-control-left"
               id="Description"
               placeholder="Description"
@@ -98,27 +79,28 @@
             id="Inactive"
             v-model="Status"
             name="Status"
-            required
           />
           <label for="Inactive">Inactive</label><br /><br />
-
-          <router-link to="/Showcategories">
+       
+      
             <button
               type="submit"
-              class="btn btn-info"
-              v-on:click="addcategories()"
+              class="btn btn-outline-dark btn-rounded"
+              data-mdb-ripple-color="dark"
             >
               Add New Category
             </button>
-          </router-link>
         </form>
+    
       </div>
     </div>
   </div>
 </template>
 <script>
 // POST DATA IN DATABASE
+
 import axios from "axios";
+
 export default {
   data() {
     return {
@@ -127,21 +109,28 @@ export default {
       Status: "",
     };
   },
+
   methods: {
     // ADD CATEGORY
     async addcategories() {
-      let result = await axios.post(" http://localhost:3000/posts", {
-        name: this.name,
-        description: this.description,
-        Status: this.Status,
-      });
-      this.$router.push("/showcategories");
-      alert(result);
-    },
+    
+          await axios.post(" http://localhost:3000/posts", {
+            name: this.name,
+            description: this.description,
+            Status: this.Status,
+          });
+          this.$router.push("/showcategories");
+       
+        }
+    
+  
   },
 };
 </script>
 <style scoped>
+.navbar {
+  height: 7%;
+}
 .container {
   background-color: white;
   width: 35%;

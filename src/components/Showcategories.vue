@@ -5,40 +5,18 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/Home">Home</router-link></a
+            ><router-link to="/home">Home</router-link></a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">about</a>
         </li>
         <li class="nav-item">
-          <div class="dropdown show">
-            <a
-              class="btn btn-secondary dropdown-toggle"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="margin: 5px"
-            >
-              Items
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item"
-                ><router-link to="/Additems">Additems</router-link></a
-              >
-              <a class="dropdown-item"
-                ><router-link to="/Showitems">Showitems</router-link></a
-              >
-            </div>
-          </div>
+          <a class="nav-link" href="#">  <router-link to="/additems">Additems</router-link></a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/Addcategory">Addcategories</router-link></a
+            ><router-link to="/addcategory">Addcategories</router-link></a
           >
         </li>
       </ul>
@@ -49,7 +27,7 @@
     class="bg-image d-flex justify-content-center align-items-center"
     style="
       background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/015.webp');
-      height: 93vh;
+      height: 94vh;
     "
   >
   <!-- TABLE FOR DISPLAY DATA  -->
@@ -111,14 +89,6 @@ export default {
     this.getitem();
   },
   methods: {
-    // DELETE DATA 
-    deleteitem(id) {
-      axios.delete(" http://localhost:3000/posts/" + id).then(() => {
-        this.categories;
-        this.Status;
-      });
-      this.getitem();
-    },
     getitem() {
       //GET DATA FROM DATABASE
       console.log("in get data");
@@ -127,10 +97,22 @@ export default {
         console.log(result.data);
       });
     },
+     // DELETE DATA 
+    deleteitem(id) {
+      axios.delete(" http://localhost:3000/posts/" + id).then(() => {
+        this.categories;
+        this.Status;
+      });
+      this.getitem();
+    },
   },
 };
 </script>
+
 <style scoped>
+.navbar{
+ height: 7%;
+}
 .table {
   background: white;
 }

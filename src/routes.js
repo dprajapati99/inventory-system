@@ -8,8 +8,8 @@ import Showitems from './components/Showitems.vue'
 import Updateitem from './components/Updateitem.vue'
 const routes = [
     {
-        path: '/Home',
-        name: 'Home',
+        path: '/home',
+        name: 'home',
         component: Home
     },
     {
@@ -28,9 +28,9 @@ const routes = [
         component: Updatecat
     },
     {
-     path:'/Additems',
-     name:'Additems',
-     component: Additems
+        path: '/Additems',
+        name: 'Additems',
+        component: Additems
     },
     {
         path: '/Showitems',
@@ -43,8 +43,8 @@ const routes = [
         component: Updateitem
     },
 ]
-const router=createRouter({
-    history:createWebHistory(),
+const router = createRouter({
+    history: createWebHistory(),
     routes
 });
 export default router;

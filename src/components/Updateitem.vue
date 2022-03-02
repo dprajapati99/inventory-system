@@ -6,18 +6,20 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              ><router-link to="/Home">Home</router-link></a
+              ><router-link to="/home">Home</router-link></a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">about</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Items</a>
+           <a class="nav-link"
+            ><router-link to="/addcategory">Addcategories</router-link></a
+          >
           </li>
           <li class="nav-item">
             <a class="nav-link"
-              ><router-link to="/Showitems">Showitems</router-link></a
+              ><router-link to="/showitems">Showitems</router-link></a
             >
           </li>
         </ul>
@@ -104,7 +106,7 @@
           <router-link to="/Showitems">
             <button
               type="submit"
-              class="btn btn-info"
+              class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark"
               v-on:click="updateitem()"
             >
               Update Item
@@ -130,13 +132,24 @@ export default {
       },
     };
   },
+  mounted(){
+    this.getitem()
+  },
   methods: {
+    //   GET ID FOR UPDATEING DATA IN DATABASE
+  async  getitem() {
+    const result = await axios.get(
+      "http://localhost:3000/comments/" + this.$route.params.id
+    );
+    console.warn(result.data);
+    this.add = result.data;
+  },
       // UPDATE DATA IN DATABSE
     async updateitem() {
       //CHECK IF DATA UPDATE OR NOT
-      console.warn(this.categories); 
+      console.warn(this.add); 
 
-      let dp = await axios.put(
+      await axios.put(
         "http://localhost:3000/comments/" + this.$route.params.id,
         {
           name: this.add.name,
@@ -147,20 +160,16 @@ export default {
         }
       );
 
-      alert(dp);
+      alert("data updated successfully");
     },
   },
-//   GET ID FOR UPDATEING DATA IN DATABASE
-  async mounted() {
-    const result = await axios.get(
-      "http://localhost:3000/comments/" + this.$route.params.id
-    );
-    console.warn(result.data);
-    this.add = result.data;
-  },
+
 };
 </script>
 <style scoped>
+.navbar{
+  height: 7%;
+}
 .container {
   background-color: white;
   width: 35%;

@@ -5,46 +5,20 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/Home">Home</router-link></a
+            ><router-link to="/home">Home</router-link></a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">about</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Items</a>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/Additems">Additems</router-link></a
+            ><router-link to="/additems">Additems</router-link></a
           >
         </li>
         <li class="nav-item">
-          <div class="dropdown show">
-            <a
-              class="btn btn-secondary dropdown-toggle"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style="margin: 5px"
-            >
-              Category
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item"
-                ><router-link to="/Addcategory">Addcategory</router-link></a
-              >
-              <a class="dropdown-item"
-                ><router-link to="/Showcategories"
-                  >Showcategories</router-link
-                ></a
-              >
-            </div>
-          </div>
+           <a class="nav-link" href="#">  <router-link to="/addcategory">Addcategory</router-link></a>
         </li>
       </ul>
     </div>
@@ -124,16 +98,6 @@ export default {
     this.getitem();
   },
   methods: {
-    //   DELETE DATA
-    deleteitems(id) {
-      axios.delete("http://localhost:3000/comments/" + id).then(() => {
-        this.categories;
-        this.price;
-        this.categorory;
-        this.Status;
-      });
-      this.getitem();
-    },
     getitem() {
       //GET DATA FROM DATABASE
       console.log("in get data");
@@ -142,10 +106,23 @@ export default {
         console.log(result.data);
       });
     },
+    // DELETE DATA
+     deleteitems(id) {
+      axios.delete("http://localhost:3000/comments/" + id).then(() => {
+        this.categories;
+        this.price;
+        this.categorory;
+        this.Status;
+      });
+      this.getitem();
+    },
   },
 };
 </script>
 <style scoped>
+.navbar{
+ height: 7%;
+}
 .table {
   background: white;
 }

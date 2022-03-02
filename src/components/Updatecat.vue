@@ -5,18 +5,20 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/Home">Home</router-link></a
+            ><router-link to="/home">Home</router-link></a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">about</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Items</a>
+          <a class="nav-link"
+            ><router-link to="/additems">Additems</router-link></a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/Addcategory">Addcategories</router-link></a
+            ><router-link to="/showcategories">Showcategories</router-link></a
           >
         </li>
       </ul>
@@ -76,7 +78,7 @@
         <label for="Inactive">Inactive</label><br /><br />
 
         <router-link to="/Showcategories">
-          <button type="submit" class="btn btn-info" v-on:click="updateitem()">
+          <button type="submit"  class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" v-on:click="updateitem()">
             Update New Category
           </button>
         </router-link>
@@ -96,14 +98,26 @@ export default {
         description: "",
         Status: "",
       },
+  
     };
   },
+  mounted(){
+    this.getcat()
+  },
   methods: {
+      async getcat() {
+    // GET ID FROM DATABASE
+    const result = await axios.get(
+      " http://localhost:3000/posts/" + this.$route.params.id
+    );
+    console.warn(result.data);
+    this.categories = result.data;
+  },
+  // UPDATING DATA IN DATABASE
     async updateitem() {
-      // UPDATING DATA IN DATABASE
-      console.warn(this.categories); //check if data is update or not
-
-      let dp = await axios.put(
+      // CHECK IF DATA IS UPDATE OR NOT 
+        console.warn(this.categories);
+          await axios.put(
         " http://localhost:3000/posts/" + this.$route.params.id,
         {
           name: this.categories.name,
@@ -112,20 +126,16 @@ export default {
         }
       );
 
-      alert(dp);
+      alert("data updated successfully");
     },
   },
-  async mounted() {
-    // GET ID FROM DATABASE
-    const result = await axios.get(
-      " http://localhost:3000/posts/" + this.$route.params.id
-    );
-    console.warn(result.data);
-    this.categories = result.data;
-  },
+  
 };
 </script>
 <style scoped>
+.navbar{
+ height: 7%;
+}
 .container {
   background-color: white;
   width: 35%;

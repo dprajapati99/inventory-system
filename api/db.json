@@ -1,28 +1,22 @@
 {
   "posts": [
     {
-      "name": "art",
-      "description": "ypu. are art ",
-      "Status": "Active",
-      "id": 7
-    },
-    {
-      "name": "beggy jense",
-      "description": "comfortable",
-      "Status": "Inactive",
+      "name": "burger",
+      "description": "combo ",
+      "status": "Active",
       "id": 8
     },
     {
-      "name": "burger",
-      "description": "mcd",
-      "Status": "Inactive",
-      "id": 9
+      "name": "crop tops ",
+      "description": "free size",
+      "status": "Active",
+      "id": 11
     },
     {
-      "name": "french fries",
-      "description": "with peri peri",
-      "Status": "Active",
-      "id": 10
+      "name": "acrylic colors",
+      "description": "artist ",
+      "status": "Active",
+      "id": 12
     }
   ],
   "comments": [
@@ -31,48 +25,24 @@
       "description": "you are art ",
       "price": "20",
       "category": "Food",
-      "Status": "Active",
+      "status": "Active",
       "id": 3
     },
     {
-      "name": "brand ",
-      "description": "unique name",
-      "price": "1000",
+      "name": "oil colors",
+      "description": "tube colors",
+      "price": "788",
       "category": "Art",
-      "Status": "Inactive",
-      "id": 4
-    },
-    {
-      "name": "navya",
-      "description": "skin care",
-      "price": "23",
-      "category": "Fashion",
-      "Status": "Active",
-      "id": 5
-    },
-    {
-      "name": "art",
-      "description": "sdhjsdhf",
-      "price": "400",
-      "category": "Fashion",
-      "Status": "Active",
+      "status": "Inactive",
       "id": 6
     },
     {
-      "name": "art",
-      "description": "ferkjcg",
-      "price": "466",
-      "category": "Fashion",
-      "Status": "Active",
+      "name": "acrylic color",
+      "description": "tube colors",
+      "price": "899",
+      "category": "Art",
+      "status": "Active",
       "id": 7
-    },
-    {
-      "name": "hoodie",
-      "description": "comfy",
-      "price": "799",
-      "category": "Fashion",
-      "Status": "Active",
-      "id": 8
     }
   ],
   "profile": []

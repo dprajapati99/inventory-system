@@ -1,46 +1,46 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './components/Home.vue'
-import Addcategory from './components/Addcategory.vue'
-import Showcategories from './components/Showcategories.vue'
-import Updatecat from './components/Updatecat.vue'
-import Additems from './components/Additems.vue'
-import Showitems from './components/Showitems.vue'
-import Updateitem from './components/Updateitem.vue'
+import AddCategory from './components/category/AddCategory.vue'
+import ShowCategories from './components/category/ShowCategories.vue'
+import UpdateCat from './components/category/UpdateCat.vue'
+import AddItems from './components/items/AddItems.vue'
+import ShowItems from './components/items/ShowItems.vue'
+import UpdateItems from './components/items/UpdateItems.vue'
 const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: Home
     },
     {
-        path: '/Addcategory',
-        name: 'Addcategory',
-        component: Addcategory
+        path: '/category/addcategory',
+        name: '/category/addcategory',
+        component: AddCategory
     },
     {
-        path: '/Showcategories',
-        name: 'Showcategories',
-        component: Showcategories
+        path: '/category/showcategories',
+        name: '/category/showcategories',
+        component: ShowCategories
     },
     {
-        path: '/Updatecat',
-        name: 'Updatecat',
-        component: Updatecat
+        path: '/category/updatecat',
+        name: '/category/updatecat',
+        component: UpdateCat
     },
     {
-        path: '/Additems',
-        name: 'Additems',
-        component: Additems
+        path: '/items/additems',
+        name: 'items/additems',
+        component: AddItems
     },
     {
-        path: '/Showitems',
-        name: 'Showitems',
-        component: Showitems
+        path: '/items/showitems',
+        name: 'items/showitems',
+        component: ShowItems
     },
     {
-        path: '/Updateitem',
-        name: 'Updateitem',
-        component: Updateitem
+        path: '/items/updateitems',
+        name: '/items/updateitems',
+        component: UpdateItems
     },
 ]
 const router = createRouter({

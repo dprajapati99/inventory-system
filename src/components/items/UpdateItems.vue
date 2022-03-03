@@ -6,20 +6,18 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              ><router-link to="/home">Home</router-link></a
+              ><router-link to="/"  style="color:white"> Home</router-link></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">about</a>
-          </li>
+         
           <li class="nav-item">
            <a class="nav-link"
-            ><router-link to="/addcategory">Addcategories</router-link></a
+            ><router-link to="/category/addCategory"  style="color:white"> Add Categories</router-link></a
           >
           </li>
           <li class="nav-item">
             <a class="nav-link"
-              ><router-link to="/showitems">Showitems</router-link></a
+              ><router-link to="/items/showItems"  style="color:white">Show Items</router-link></a
             >
           </li>
         </ul>
@@ -89,8 +87,8 @@
             type="radio"
             value="Active"
             id="Active"
-            v-model="add.Status"
-            name="Status"
+            v-model="add.status"
+            name="status"
           />
           <label for="Active">Active</label>
 
@@ -98,16 +96,16 @@
             type="radio"
             value="Inactive"
             id="Inactive"
-            v-model="add.Status"
-            name="Status"
+            v-model="add.status"
+            name="status"
           />
           <label for="Inactive">Inactive</label><br /><br />
 
-          <router-link to="/Showitems">
+          <router-link to="/Showitems" >
             <button
               type="submit"
               class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark"
-              v-on:click="updateitem()"
+              v-on:click="updateItem()"
             >
               Update Item
             </button>
@@ -128,16 +126,16 @@ export default {
         description: "",
         price: "",
         category: "",
-        Status: "",
+        status: "",
       },
     };
   },
   mounted(){
-    this.getitem()
+    this.getItem()
   },
   methods: {
     //   GET ID FOR UPDATEING DATA IN DATABASE
-  async  getitem() {
+  async  getItem() {
     const result = await axios.get(
       "http://localhost:3000/comments/" + this.$route.params.id
     );
@@ -145,7 +143,7 @@ export default {
     this.add = result.data;
   },
       // UPDATE DATA IN DATABSE
-    async updateitem() {
+    async updateItem() {
       //CHECK IF DATA UPDATE OR NOT
       console.warn(this.add); 
 
@@ -156,7 +154,7 @@ export default {
           description: this.add.description,
           price: this.add.price,
           category: this.add.category,
-          Status: this.add.Status,
+          status: this.add.status,
         }
       );
 

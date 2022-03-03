@@ -10,16 +10,14 @@
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
+       
           <li class="nav-item">
-            <a class="nav-link" href="#">about</a>
-          </li>
-          <li class="nav-item">
-               <a class="nav-link" href="#"> <router-link to="/additems">Additems</router-link></a>
+               <a class="nav-link" href="#"> <router-link to="/items/additems"  style="color:white">Add Items</router-link></a>
          
           </li>
 
           <li class="nav-item">
-           <a class="nav-link" href="#">  <router-link to="/addcategory">Addcategory</router-link></a>
+           <a class="nav-link" href="#">  <router-link to="/category/addcategory"  style="color:white" >Add Category</router-link></a>
           </li>
         </ul>
       </div>
@@ -43,7 +41,7 @@
             <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
             <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
           </svg>
-          <span><router-link to="/additems">START HERE </router-link></span>
+          <span><router-link to="/items/additems" style="color:white">START HERE </router-link></span>
         </button>
       </h1>
     </div>

@@ -5,18 +5,16 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/home">Home</router-link></a
+            ><router-link to="/"  style="color:white">Home</router-link></a
           >
         </li>
+      
         <li class="nav-item">
-          <a class="nav-link" href="#">about</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">  <router-link to="/additems">Additems</router-link></a>
+          <a class="nav-link" href="#">  <router-link to="/items/additems"  style="color:white">Add Items</router-link></a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/addcategory">Addcategories</router-link></a
+            ><router-link to="/category/addcategory"  style="color:white">Add Categories</router-link></a
           >
         </li>
       </ul>
@@ -45,13 +43,13 @@
         <tr v-for="item in categories" :key="item.id">
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>
-          <td>{{ item.Status }}</td>
+          <td>{{ item.status }}</td>
           <td>
             <button
               type="submit"
               class="btn btn-outline-danger"
               data-mdb-ripple-color="dark"
-              v-on:click="deleteitem(item.id)"
+              v-on:click="deleteItem(item.id)"
             >
               Delete
             </button>
@@ -63,7 +61,7 @@
               class="btn btn-outline-success"
               data-mdb-ripple-color="dark"
               @click="
-                $router.push({ name: 'Updatecat', params: { id: item.id } })
+                $router.push({ name: '/category/updatecat', params: { id: item.id } })
               "
             >
               Edit
@@ -82,14 +80,14 @@ export default {
   data() {
     return {
       categories: [],
-      Status: "",
+      status: "",
     };
   },
   mounted() {
-    this.getitem();
+    this.getItem();
   },
   methods: {
-    getitem() {
+    getItem() {
       //GET DATA FROM DATABASE
       console.log("in get data");
       axios.get(" http://localhost:3000/posts").then((result) => {
@@ -98,12 +96,12 @@ export default {
       });
     },
      // DELETE DATA 
-    deleteitem(id) {
+    deleteItem(id) {
       axios.delete(" http://localhost:3000/posts/" + id).then(() => {
         this.categories;
-        this.Status;
+        this.status;
       });
-      this.getitem();
+      this.getItem();
     },
   },
 };

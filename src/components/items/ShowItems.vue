@@ -5,20 +5,18 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/home">Home</router-link></a
+            ><router-link to="/"  style="color:white">Home</router-link></a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">about</a>
-        </li>
+    
        
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/additems">Additems</router-link></a
+            ><router-link to="/items/additems"  style="color:white">Add Items</router-link></a
           >
         </li>
         <li class="nav-item">
-           <a class="nav-link" href="#">  <router-link to="/addcategory">Addcategory</router-link></a>
+           <a class="nav-link" href="#">  <router-link to="/category/addcategory"  style="color:white">Add Category</router-link></a>
         </li>
       </ul>
     </div>
@@ -33,7 +31,7 @@
   >
     <div>
         <!-- TABLE FOR DIAPLAY DATA -->
-      <h3 class="text-white">SHOW CATEGORIES</h3>
+      <h3 class="text-white">SHOW ITEMS</h3>
       <table border="1px" align="center" class="table">
         <tr>
           <td>name</td>
@@ -51,13 +49,13 @@
           <td>{{ item.price }}</td>
           <td>{{ item.category }}</td>
 
-          <td>{{ item.Status }}</td>
+          <td>{{ item.status }}</td>
           <td>
             <button
               type="submit"
               class="btn btn-outline-danger"
               data-mdb-ripple-color="dark"
-              v-on:click="deleteitems(item.id)"
+              v-on:click="deleteItems(item.id)"
             >
               Delete
             </button>
@@ -69,7 +67,7 @@
               class="btn btn-outline-success"
               data-mdb-ripple-color="dark"
               @click="
-                $router.push({ name: 'Updateitem', params: { id: item.id } })
+                $router.push({ name: '/items/updateitems', params: { id: item.id } })
               "
             >
               Edit
@@ -90,15 +88,15 @@ export default {
       categories: [],
       price: "",
       categorory: "",
-      Status: "",
+      status: "",
     };
   },
   mounted() {
-    //   GET DATA 
-    this.getitem();
+  
+    this.getItem();   //   GET DATA 
   },
   methods: {
-    getitem() {
+    getItem() {
       //GET DATA FROM DATABASE
       console.log("in get data");
       axios.get("http://localhost:3000/comments").then((result) => {
@@ -107,14 +105,14 @@ export default {
       });
     },
     // DELETE DATA
-     deleteitems(id) {
+     deleteItems(id) {
       axios.delete("http://localhost:3000/comments/" + id).then(() => {
         this.categories;
         this.price;
         this.categorory;
-        this.Status;
+        this.status;
       });
-      this.getitem();
+      this.getItem();
     },
   },
 };

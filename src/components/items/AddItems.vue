@@ -6,21 +6,19 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              ><router-link to="/home">Home</router-link></a
+              ><router-link to="/"  style="color:white">Home</router-link></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">about</a>
-          </li>
+      
 
           <li class="nav-item">
             <a class="nav-link"
-              ><router-link to="/showitems">Showitems</router-link></a
+              ><router-link to="/items/showitems"  style="color:white">Show Items</router-link></a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <router-link to="/addcategory">Addcategory</router-link></a
+              <router-link to="category/addcategory"  style="color:white">Add Category</router-link></a
             >
           </li>
         </ul>
@@ -37,7 +35,7 @@
       <!-- FORM ADD NEW ITEMS -->
       <div class="container">
         <h3>Add New Items</h3>
-        <form @submit.prevent="additems()">
+        <form @submit.prevent="addItems()">
           <div class="form-group">
             <label for="Name">Name</label>
             <input
@@ -86,13 +84,13 @@
             </select>
           </div>
 
-          <lable for="Status">Status:</lable>
+          <lable for="status">Status:</lable>
           <input
             type="radio"
             value="Active"
             id="Active"
-            v-model="Status"
-            name="Status"
+            v-model="status"
+            name="status"
             required
           />
           <label for="Active">Active</label>
@@ -101,8 +99,8 @@
             type="radio"
             value="Inactive"
             id="Inactive"
-            v-model="Status"
-            name="Status"
+            v-model="status"
+            name="status"
             required
           />
           <label for="Inactive">Inactive</label><br /><br />
@@ -128,20 +126,20 @@ export default {
       description: "",
       price: "",
       category: "",
-      Status: "",
+      status: "",
     };
   },
   methods: {
     //ADD ITEMS
-    async additems() {
+    async addItems() {
       await axios.post("http://localhost:3000/comments/", {
         name: this.name,
         description: this.description,
         price: this.price,
         category: this.category,
-        Status: this.Status,
+        status: this.status,
       });
-      this.$router.push("/showitems");
+      this.$router.push("/items/showitems");
     },
   },
 };

@@ -5,20 +5,18 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#"
-            ><router-link to="/home">Home</router-link></a
+            ><router-link to="/"  style="color:white">Home</router-link></a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">about</a>
-        </li>
+  
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/additems">Additems</router-link></a
+            ><router-link to="/items/addItems"  style="color:white">Add Items</router-link></a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link"
-            ><router-link to="/showcategories">Showcategories</router-link></a
+            ><router-link to="/category/showcategories"  style="color:white">Show Categories</router-link></a
           >
         </li>
       </ul>
@@ -63,8 +61,8 @@
           type="radio"
           value="Active"
           id="Active"
-          v-model="categories.Status"
-          name="Status"
+          v-model="categories.status"
+          name="status"
         />
         <label for="Active">Active</label>
 
@@ -72,13 +70,13 @@
           type="radio"
           value="Inactive"
           id="Inactive"
-          v-model="categories.Status"
-          name="Status"
+          v-model="categories.status"
+          name="status"
         />
         <label for="Inactive">Inactive</label><br /><br />
 
-        <router-link to="/Showcategories">
-          <button type="submit"  class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" v-on:click="updateitem()">
+        <router-link to="/ShowCategories" >
+          <button type="submit"  class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" v-on:click="updateItem()">
             Update New Category
           </button>
         </router-link>
@@ -96,16 +94,16 @@ export default {
       categories: {
         name: "",
         description: "",
-        Status: "",
+        status: "",
       },
   
     };
   },
   mounted(){
-    this.getcat()
+    this.getCat()
   },
   methods: {
-      async getcat() {
+      async getCat() {
     // GET ID FROM DATABASE
     const result = await axios.get(
       " http://localhost:3000/posts/" + this.$route.params.id
@@ -114,7 +112,7 @@ export default {
     this.categories = result.data;
   },
   // UPDATING DATA IN DATABASE
-    async updateitem() {
+    async updateItem() {
       // CHECK IF DATA IS UPDATE OR NOT 
         console.warn(this.categories);
           await axios.put(
@@ -122,7 +120,7 @@ export default {
         {
           name: this.categories.name,
           description: this.categories.description,
-          Status: this.categories.Status,
+          status: this.categories.status,
         }
       );
 

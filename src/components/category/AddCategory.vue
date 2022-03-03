@@ -6,20 +6,18 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="#"
-              ><router-link to="/home">Home</router-link></a
+              ><router-link to="/"  style="color:white">Home</router-link></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">about</a>
-          </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <router-link to="/additems">Additems</router-link></a
+              <router-link to="/items/additems"  style="color:white">Add Items</router-link></a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link"
-              ><router-link to="/showcategories">Showcategories</router-link></a
+              ><router-link to="/category/showcategories"  style="color:white">Show Categories</router-link></a
             >
           </li>
         </ul>
@@ -37,7 +35,7 @@
       <div class="container">
         <h3>Add New Category</h3>
         
-        <form  @submit.prevent="addcategories()" >
+        <form  @submit.prevent="addCategories()" >
           <div class="form-group">
             <label for="Name">Name</label>
             <input
@@ -67,8 +65,8 @@
             type="radio"
             value="Active"
             id="Active"
-            v-model="Status"
-            name="Status"
+            v-model="status"
+            name="status"
             required
           />
           <label for="Active">Active</label>
@@ -77,8 +75,8 @@
             type="radio"
             value="Inactive"
             id="Inactive"
-            v-model="Status"
-            name="Status"
+            v-model="status"
+            name="status"
           />
           <label for="Inactive">Inactive</label><br /><br />
        
@@ -106,20 +104,20 @@ export default {
     return {
       name: "",
       description: "",
-      Status: "",
+      status: "",
     };
   },
 
   methods: {
     // ADD CATEGORY
-    async addcategories() {
+    async addCategories() {
     
           await axios.post(" http://localhost:3000/posts", {
             name: this.name,
             description: this.description,
-            Status: this.Status,
+            status: this.status,
           });
-          this.$router.push("/showcategories");
+          this.$router.push("/category/showcategories");
        
         }
     

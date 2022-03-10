@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg  navbar navbar-dark bg-dark ">
       <!-- Navbar content -->
 
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,7 +26,7 @@
       class="bg-image d-flex justify-content-center align-items-center"
       style="
         background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/015.webp');
-        height: 93vh;
+       height: 93vh;; 
       "
     >
       <h1 class="text-white">
@@ -54,7 +54,17 @@ export default {};
 <style scoped>
 .navbar{
   height: 7%;
+   /* width: 100%;
+   margin: 0 auto;
+   background-color: rgba(255,255,255,0.5);
+   position: fixed;
+   top: 0; */
 }
+/* .bg-image{
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh;
+} */
 .text {
   font-size: 20px;
   text-align: center;

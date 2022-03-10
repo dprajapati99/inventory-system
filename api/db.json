@@ -17,6 +17,18 @@
       "description": "artist ",
       "status": "Active",
       "id": 12
+    },
+    {
+      "name": "dp",
+      "description": "sgadhsz",
+      "status": "Inactive",
+      "id": 13
+    },
+    {
+      "name": "zarni",
+      "description": "hdagsda",
+      "status": "Active",
+      "id": 14
     }
   ],
   "comments": [
@@ -43,6 +55,22 @@
       "category": "Art",
       "status": "Active",
       "id": 7
+    },
+    {
+      "name": "paul",
+      "description": "dhgexj",
+      "price": "34",
+      "category": "Art",
+      "status": "Active",
+      "id": 8
+    },
+    {
+      "name": "yshvi",
+      "description": "eeewseq",
+      "price": "343",
+      "category": "Fashion",
+      "status": "Active",
+      "id": 9
     }
   ],
   "profile": []

@@ -30,7 +30,7 @@
     "
   >
     <div>
-        <!-- TABLE FOR DIAPLAY DATA -->
+        <!-- TABLE FOR DISPLAY DATA -->
       <h3 class="text-white">SHOW ITEMS</h3>
       <table border="1px" align="center" class="table">
         <tr>
@@ -96,8 +96,8 @@ export default {
     this.getItem();   //   GET DATA 
   },
   methods: {
+    //GET DATA FROM DATABASE
     getItem() {
-      //GET DATA FROM DATABASE
       console.log("in get data");
       axios.get("http://localhost:3000/comments").then((result) => {
         this.categories = result.data;

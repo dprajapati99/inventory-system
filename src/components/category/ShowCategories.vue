@@ -87,8 +87,8 @@ export default {
     this.getItem();
   },
   methods: {
+     //GET DATA FROM DATABASE
     getItem() {
-      //GET DATA FROM DATABASE
       console.log("in get data");
       axios.get(" http://localhost:3000/posts").then((result) => {
         this.categories = result.data;

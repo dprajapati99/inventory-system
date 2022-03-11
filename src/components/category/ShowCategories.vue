@@ -1,25 +1,8 @@
 <template>
-<!-- NAVBAR -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"
-            ><router-link to="/"  style="color:white">Home</router-link></a
-          >
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="#">  <router-link to="/items/additems"  style="color:white">Add Items</router-link></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-            ><router-link to="/category/addcategory"  style="color:white">Add Categories</router-link></a
-          >
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!-- NAVBAR -->
+  <navBar />
+  <!-- NAVBAR -->
+
   <!-- BACKGROUND IMAGE -->
   <div
     class="bg-image d-flex justify-content-center align-items-center"
@@ -28,7 +11,7 @@
       height: 94vh;
     "
   >
-  <!-- TABLE FOR DISPLAY DATA  -->
+    <!-- TABLE FOR DISPLAY DATA  -->
     <div>
       <h3 class="text-white">SHOW CATEGORIES</h3>
       <table border="1px" align="center" class="table">
@@ -61,7 +44,10 @@
               class="btn btn-outline-success"
               data-mdb-ripple-color="dark"
               @click="
-                $router.push({ name: '/category/updatecat', params: { id: item.id } })
+                $router.push({
+                  name: '/category/updatecat',
+                  params: { id: item.id },
+                })
               "
             >
               Edit
@@ -75,8 +61,13 @@
 
 <script>
 // FOR DELETE AND GET DATA
+import navBar from "../navBar.vue";
 import axios from "axios";
+import swal from 'sweetalert';
 export default {
+  components: {
+    navBar,
+  },
   data() {
     return {
       categories: [],
@@ -87,7 +78,7 @@ export default {
     this.getItem();
   },
   methods: {
-     //GET DATA FROM DATABASE
+    //GET DATA FROM DATABASE
     getItem() {
       console.log("in get data");
       axios.get(" http://localhost:3000/posts").then((result) => {
@@ -95,21 +86,39 @@ export default {
         console.log(result.data);
       });
     },
-     // DELETE DATA 
+    // DELETE DATA
+
     deleteItem(id) {
-      axios.delete(" http://localhost:3000/posts/" + id).then(() => {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+          axios.delete(" http://localhost:3000/posts/" + id).then(() => {
         this.categories;
         this.status;
       });
-      this.getItem();
+        if (willDelete) {
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });  this.getItem();
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+    
+      // alert("deleted data");
+    
     },
   },
 };
 </script>
 
 <style scoped>
-.navbar{
- height: 7%;
+.navbar {
+  height: 7%;
 }
 .table {
   background: white;

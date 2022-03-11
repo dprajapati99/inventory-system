@@ -1,27 +1,8 @@
 <template>
   <div id="app">
-    <nav class="navbar fixed-top navbar-expand-lg  navbar navbar-dark bg-dark ">
-      <!-- Navbar content -->
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-       
-          <li class="nav-item">
-               <a class="nav-link" href="#"> <router-link to="/items/additems"  style="color:white">Add Items</router-link></a>
-         
-          </li>
-
-          <li class="nav-item">
-           <a class="nav-link" href="#">  <router-link to="/category/addcategory"  style="color:white" >Add Category</router-link></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+     <!-- NAVBAR  -->
+     <navBar/>
+       <!-- NAVBAR  -->
     <div
       class="bg-image d-flex justify-content-center align-items-center"
       style="
@@ -49,17 +30,20 @@
 </template>
 
 <script>
-export default {};
+import navBar from './navBar.vue'
+export default {
+  components:{
+    navBar
+  }
+};
 </script>
 <style scoped>
-.navbar{
-  height: 7%;
    /* width: 100%;
    margin: 0 auto;
    background-color: rgba(255,255,255,0.5);
    position: fixed;
    top: 0; */
-}
+
 /* .bg-image{
   background-attachment: fixed;
   background-repeat: no-repeat;

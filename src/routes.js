@@ -6,6 +6,8 @@ import UpdateCat from './components/category/UpdateCat.vue'
 import AddItems from './components/items/AddItems.vue'
 import ShowItems from './components/items/ShowItems.vue'
 import UpdateItems from './components/items/UpdateItems.vue'
+import navBar from './components/navBar.vue'
+
 const routes = [
     {
         path: '/',
@@ -29,18 +31,23 @@ const routes = [
     },
     {
         path: '/items/additems',
-        name: 'items/additems',
+        name: '/items/additems',
         component: AddItems
     },
     {
         path: '/items/showitems',
-        name: 'items/showitems',
+        name: '/items/showitems',
         component: ShowItems
     },
     {
         path: '/items/updateitems',
         name: '/items/updateitems',
         component: UpdateItems
+    },
+    {
+        path: '/navbar',
+        name: 'navbar',
+        component: navBar
     },
 ]
 const router = createRouter({

@@ -1,32 +1,9 @@
 <template>
   <div>
     <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              ><router-link to="/" style="color: white">Home</router-link></a
-            >
-          </li>
+ <navBar/>
+     <!-- NAVBAR -->
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <router-link to="/items/additems" style="color: white"
-                >Add Items</router-link
-              ></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"
-              ><router-link to="/category/showcategories" style="color: white"
-                >Show Categories</router-link
-              ></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
     <!-- BACKGROUND IMAGE -->
     <div
       class="bg-image d-flex justify-content-center align-items-center"
@@ -105,12 +82,16 @@
 </template>
 <script>
 // POST DATA IN DATABASE
-
+import navBar from '../navBar.vue'
 import axios from "axios";
 import useValidate from "@vuelidate/core";
 import { required, alpha, maxLength } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
+import swal from 'sweetalert';
 export default {
+  components:{
+    navBar
+},
   setup() {
     const state = reactive({
       name: "",
@@ -134,15 +115,15 @@ export default {
     async addCategory() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        await axios.post(" http://localhost:3000/posts", {
+           await axios.post(process.env.VUE_APP_API_URL, {
           name: this.state.name,
           description: this.state.description,
           status: this.state.status,
         });
         this.$router.push("/category/showcategories");
-        alert("thank you ,form successfully submitted");
+    swal("Good job!", "You clicked the button!", "success");
       } else {
-        alert("please fill the form");
+        swal( "...Please fill the form!");
       }
     },
   },

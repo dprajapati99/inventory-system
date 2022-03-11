@@ -1,28 +1,9 @@
 <template>
   <div>
       <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              ><router-link to="/"  style="color:white"> Home</router-link></a
-            >
-          </li>
-         
-          <li class="nav-item">
-           <a class="nav-link"
-            ><router-link to="/category/addCategory"  style="color:white"> Add Categories</router-link></a
-          >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"
-              ><router-link to="/items/showItems"  style="color:white">Show Items</router-link></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <navBar />
+      <!-- NAVBAR -->
+
     <!-- BACKGROUND IMAGE -->
     <div
       class="bg-image d-flex justify-content-center align-items-center"
@@ -101,11 +82,11 @@
           />
           <label for="Inactive">Inactive</label><br /><br />
 
-          <router-link to="/Showitems" >
+          <router-link to="/items/Showitems" >
             <button
               type="submit"
               class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark"
-              v-on:click="updateItem()"
+              v-on:click="updateItem()"  
             >
               Update Item
             </button>
@@ -117,8 +98,12 @@
 </template>
 <script>
 // UPDATE DATA IN DATABSE
+import navBar from '../navBar.vue'
 import axios from "axios";
 export default {
+  components:{
+  navBar
+  },
   data() {
     return {
       add: {

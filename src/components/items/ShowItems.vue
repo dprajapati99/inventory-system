@@ -1,26 +1,9 @@
 <template>
 <!-- NAVBAR -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"
-            ><router-link to="/"  style="color:white">Home</router-link></a
-          >
-        </li>
-    
-       
-        <li class="nav-item">
-          <a class="nav-link"
-            ><router-link to="/items/additems"  style="color:white">Add Items</router-link></a
-          >
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" href="#">  <router-link to="/category/addcategory"  style="color:white">Add Category</router-link></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <navBar />
+  <!-- NAVBAR -->
+
+
   <!-- BACKGROUND IMAGE -->
   <div
     class="bg-image d-flex justify-content-center align-items-center"
@@ -81,8 +64,13 @@
 
 <script>
 // FOR GET AND DELETE
+import navBar from '../navBar.vue'
 import axios from "axios";
+import swal from 'sweetalert';
 export default {
+  components:{
+    navBar
+  },
   data() {
     return {
       categories: [],
@@ -93,26 +81,44 @@ export default {
   },
   mounted() {
   
-    this.getItem();   //   GET DATA 
+    this.getItem(); 
+     //   GET DATA 
   },
   methods: {
     //GET DATA FROM DATABASE
     getItem() {
       console.log("in get data");
-      axios.get("http://localhost:3000/comments").then((result) => {
+      axios.get(process.env.VUE_APP_SHOW_GET_ITEM).then((result) => {
         this.categories = result.data;
         console.log(result.data);
       });
     },
     // DELETE DATA
      deleteItems(id) {
-      axios.delete("http://localhost:3000/comments/" + id).then(() => {
+        swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    axios.delete(process.env.VUE_APP_DELETE_ITEM + id).then(() => {
         this.categories;
         this.price;
         this.categorory;
         this.status;
-      });
-      this.getItem();
+      })
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+         this.getItem();
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+      
     },
   },
 };

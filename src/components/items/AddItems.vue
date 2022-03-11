@@ -1,32 +1,9 @@
 <template>
   <div>
     <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              ><router-link to="/" style="color: white">Home</router-link></a
-            >
-          </li>
+ <navBar />
+  <!-- NAVBAR -->
 
-          <li class="nav-item">
-            <a class="nav-link"
-              ><router-link to="/items/showitems" style="color: white"
-                >Show Items</router-link
-              ></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <router-link to="category/addcategory" style="color: white"
-                >Add Category</router-link
-              ></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
     <!-- BACKGROUND IMAGE -->
     <div
       class="bg-image d-flex justify-content-center align-items-center"
@@ -43,7 +20,7 @@
             <span v-if="v$.name.$error" style="color: red">
               {{ v$.name.$errors[0].$message }} </span
             ><br />
-            <label for="Name">Name :</label>
+            <label for="Name">Name </label>
             <input
               type="name"
               class="form-control-left"
@@ -131,17 +108,23 @@
 </template>
 <script>
 // FOR POST DATA
+
+import navBar from '../navBar.vue'
 import axios from "axios";
 import useValidate from "@vuelidate/core";
 import { required, alpha, maxLength, numeric } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
+import swal from 'sweetalert';
 export default {
+  components:{
+   navBar
+  },
   setup() {
     const state = reactive({
       name: "",
       description: "",
       price: "",
-      category: "",
+        category: "",
       status: "",
     });
     const rules = computed(() => {
@@ -159,13 +142,12 @@ export default {
       v$,
     };
   },
-
   methods: {
     //ADD ITEMS
     async addItems() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        await axios.post("http://localhost:3000/comments/", {
+        await axios.post(process.env.VUE_APP_ROOT_API, {
           name: this.state.name,
           description: this.state.description,
           price: this.state.price,
@@ -173,9 +155,9 @@ export default {
           status: this.state.status,
         });
         this.$router.push("/items/showitems");
-        alert("thank you, form submmitted successfully ");
+         swal("Good job!", "You clicked the button!", "success");
       } else {
-        alert("please fill the form ");
+        swal( "...Please fill the form!");
       }
     },
   },

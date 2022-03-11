@@ -1,76 +1,40 @@
 {
   "posts": [
     {
-      "name": "burger",
-      "description": "combo ",
-      "status": "Active",
-      "id": 8
-    },
-    {
-      "name": "crop tops ",
-      "description": "free size",
-      "status": "Active",
-      "id": 11
-    },
-    {
-      "name": "acrylic colors",
-      "description": "artist ",
-      "status": "Active",
-      "id": 12
-    },
-    {
-      "name": "dp",
-      "description": "sgadhsz",
+      "name": "dddddd",
+      "description": "dxdxzcf",
       "status": "Inactive",
-      "id": 13
+      "id": 18
     },
     {
-      "name": "zarni",
-      "description": "hdagsda",
+      "name": "jenase",
+      "description": "hsjdhjahd",
       "status": "Active",
-      "id": 14
+      "id": 19
+    },
+    {
+      "name": "sweatshirts",
+      "description": "comfy",
+      "status": "Active",
+      "id": 20
     }
   ],
   "comments": [
     {
-      "name": " burger",
-      "description": "you are art ",
-      "price": "20",
-      "category": "Food",
-      "status": "Active",
-      "id": 3
-    },
-    {
-      "name": "oil colors",
-      "description": "tube colors",
-      "price": "788",
-      "category": "Art",
-      "status": "Inactive",
-      "id": 6
-    },
-    {
-      "name": "acrylic color",
-      "description": "tube colors",
-      "price": "899",
-      "category": "Art",
-      "status": "Active",
-      "id": 7
-    },
-    {
-      "name": "paul",
-      "description": "dhgexj",
-      "price": "34",
-      "category": "Art",
-      "status": "Active",
-      "id": 8
-    },
-    {
-      "name": "yshvi",
-      "description": "eeewseq",
-      "price": "343",
+      "name": "hello",
+      "description": "FSF",
+      "price": "665",
       "category": "Fashion",
       "status": "Active",
-      "id": 9
+      "id": 5
+    },
+    {
+      "name": "sweatshirts",
+      "description": "comfy",
+      "price": "888",
+      "category": "Fashion",
+      "status": "Active",
+      "id": 6
     }
   ],
   "profile": []

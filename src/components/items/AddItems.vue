@@ -43,7 +43,7 @@
             <span v-if="v$.name.$error" style="color: red">
               {{ v$.name.$errors[0].$message }} </span
             ><br />
-            <label for="Name">Name</label>
+            <label for="Name">Name :</label>
             <input
               type="name"
               class="form-control-left"
@@ -57,7 +57,7 @@
             <span v-if="v$.description.$error" style="color: red">
               {{ v$.description.$errors[0].$message }} </span
             ><br />
-            <label for=" Email1msg">Description:</label>
+            <label for=" Email1msg">Description :</label>
             <input
               type="textarea"
               class="form-control-left"
@@ -71,7 +71,7 @@
             <span v-if="v$.price.$error" style="color: red">
               {{ v$.price.$errors[0].$message }} </span
             ><br />
-            <label for=" Email1msg">Price:</label>
+            <label for=" Email1msg">Price :</label>
             <input
               type="textarea"
               class="form-control-left"
@@ -85,7 +85,7 @@
             <span v-if="v$.category.$error" style="color: red">
               {{ v$.category.$errors[0].$message }} </span
             ><br />
-            <label for="category">Category</label>
+            <label for="category">Category :</label>
             <select name="income" v-model="state.category">
               <optgroup label="Items">
                 <option value="Art">Art</option>
@@ -98,7 +98,7 @@
             <span v-if="v$.status.$error" style="color: red">
               {{ v$.status.$errors[0].$message }} </span
             ><br />
-            <lable for="status">Status:</lable>
+            <lable for="status">Status :</lable>
             <input
               type="radio"
               value="Active"
@@ -147,8 +147,8 @@ export default {
     const rules = computed(() => {
       return {
         name: { required, alpha },
-        description: { required, alpha, maxLength: maxLength(10) },
-        price: { required, numeric },
+        description: { required, maxLength: maxLength(10) },
+        price: { required, numeric, maxLength:maxLength(3)},
         category: { required },
         status: { required },
       };

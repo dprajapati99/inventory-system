@@ -40,11 +40,10 @@
         <h3>Add New Category</h3>
 
         <form @submit.prevent="addCategory()">
-
           <div class="form-group">
-               <span v-if="v$.name.$error" style="color:red">
-              {{ v$.name.$errors[0].$message }}
-            </span><br>
+            <span v-if="v$.name.$error" style="color: red">
+              {{ v$.name.$errors[0].$message }} </span
+            ><br />
             <label for="Name">Name :</label>
             <input
               type="text"
@@ -56,9 +55,9 @@
           </div>
 
           <div class="form-group">
-              <span v-if="v$.description.$error" style="color:red">
-              {{ v$.description.$errors[0].$message }}
-            </span><br>
+            <span v-if="v$.description.$error" style="color: red">
+              {{ v$.description.$errors[0].$message }} </span
+            ><br />
             <label for="description">Description:</label>
             <input
               type="textarea"
@@ -69,30 +68,29 @@
               v-model="state.description"
             />
           </div>
-            <div class="from-group">
-                <span v-if="v$.status.$error" style="color:red">
-            {{ v$.status.$errors[0].$message }}
-          </span><br>
-          <lable for="Status">Status:</lable>
-          <input
-            type="radio"
-            value="Active"
-            id="Active"
-            v-model="state.status"
-            name="status"
-          />
-          <label for="Active">Active</label>
+          <div class="from-group">
+            <span v-if="v$.status.$error" style="color: red">
+              {{ v$.status.$errors[0].$message }} </span
+            ><br />
+            <lable for="Status">Status:</lable>
+            <input
+              type="radio"
+              value="Active"
+              id="Active"
+              v-model="state.status"
+              name="status"
+            />
+            <label for="Active">Active</label>
 
-          <input
-            type="radio"
-            value="Inactive"
-            id="Inactive"
-            v-model="state.status"
-            name="status"
-          />
-          <label for="Inactive">Inactive</label><br /><br />
-          
-            </div>
+            <input
+              type="radio"
+              value="Inactive"
+              id="Inactive"
+              v-model="state.status"
+              name="status"
+            />
+            <label for="Inactive">Inactive</label><br /><br />
+          </div>
           <button
             type="submit"
             class="btn btn-outline-dark btn-rounded"
@@ -110,7 +108,7 @@
 
 import axios from "axios";
 import useValidate from "@vuelidate/core";
-import { required, alpha ,maxLength} from "@vuelidate/validators";
+import { required, alpha, maxLength } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
 export default {
   setup() {
@@ -122,7 +120,7 @@ export default {
     const rules = computed(() => {
       return {
         name: { required, alpha },
-        description: { required ,alpha,maxLength:maxLength(10) },
+        description: { required, maxLength: maxLength(10) },
         status: { required },
       };
     });
@@ -142,7 +140,7 @@ export default {
           status: this.state.status,
         });
         this.$router.push("/category/showcategories");
-        alert("form successfully submitted");
+        alert("thank you ,form successfully submitted");
       } else {
         alert("please fill the form");
       }

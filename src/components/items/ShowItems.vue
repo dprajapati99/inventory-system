@@ -88,7 +88,7 @@ export default {
     //GET DATA FROM DATABASE
     getItem() {
       console.log("in get data");
-      axios.get(process.env.VUE_APP_SHOW_GET_ITEM).then((result) => {
+      axios.get("http://localhost:3000/comments").then((result) => {
         this.categories = result.data;
         console.log(result.data);
       });
@@ -104,7 +104,7 @@ export default {
 })
 .then((willDelete) => {
   if (willDelete) {
-    axios.delete(process.env.VUE_APP_DELETE_ITEM + id).then(() => {
+    axios.delete("http://localhost:3000/comments/ "+ id).then(() => {
         this.categories;
         this.price;
         this.categorory;

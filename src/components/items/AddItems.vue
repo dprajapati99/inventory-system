@@ -63,11 +63,11 @@
               {{ v$.category.$errors[0].$message }} </span
             ><br />
             <label for="category">Category :</label>
-            <select name="income" v-model="state.category">
-              <optgroup label="Items">
-                <option value="Art">Art</option>
-                <option value="Fashion">Fashion</option>
-                <option value="Food">Food</option>
+            <select name="income" v-model="state.category" @click="getName()"> 
+              <optgroup label="category">
+                <option v-for="category in categories" :key="category.id">{{ category.name}}</option>
+                <option value="select a value">select value</option>
+                <!-- <option value="Food">Food</option> -->
               </optgroup>
             </select>
           </div>
@@ -121,10 +121,11 @@ export default {
   },
   setup() {
     const state = reactive({
+      cname:"",
       name: "",
       description: "",
       price: "",
-        category: "",
+      category: "",
       status: "",
     });
     const rules = computed(() => {
@@ -142,12 +143,21 @@ export default {
       v$,
     };
   },
+  mounted(){
+  this.getName()
+  },
   methods: {
     //ADD ITEMS
+     getName(){
+     axios.get(" http://localhost:3000/posts").then((result) => {
+        this.categories = result.data;
+        console.log(result.data);
+      });
+     },
     async addItems() {
       this.v$.$validate();
       if (!this.v$.$error) {
-        await axios.post(process.env.VUE_APP_ROOT_API, {
+        await axios.post("http://localhost:3000/comments/", {
           name: this.state.name,
           description: this.state.description,
           price: this.state.price,

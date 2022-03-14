@@ -115,7 +115,7 @@ export default {
     async addCategory() {
       this.v$.$validate();
       if (!this.v$.$error) {
-           await axios.post(process.env.VUE_APP_API_URL, {
+           await axios.post("http://localhost:3000/posts/", {
           name: this.state.name,
           description: this.state.description,
           status: this.state.status,

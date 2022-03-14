@@ -1,7 +1,7 @@
 <template>
   <!-- NAVBAR -->
- <navBar/>
-   <!-- NAVBAR -->
+  <navBar />
+  <!-- NAVBAR -->
 
   <!-- BACKGROUND IMAGE -->
   <div
@@ -14,11 +14,11 @@
     <!-- FOM FOR UPDATE CATEGORY -->
     <div class="container">
       <h3>Add New Category</h3>
-      <form>
+      <form @submit.prevent="updateItem()">
         <div class="form-group">
-           <span v-if="v$.categories.name.$error" style="color: red">
-              {{ v$.categories.name.$errors[0].$message }} </span
-            ><br />
+          <span v-if="v$.categories.name.$error" style="color: red">
+            {{ v$.categories.name.$errors[0].$message }} </span
+          ><br />
           <label for="Name">Name</label>
           <input
             type="name"
@@ -31,8 +31,8 @@
 
         <div class="form-group">
           <span v-if="v$.categories.description.$error" style="color: red">
-              {{ v$.categories.description.$errors[0].$message }} </span
-            ><br />
+            {{ v$.categories.description.$errors[0].$message }} </span
+          ><br />
           <label for=" Email1msg">Description:</label>
           <input
             type="textarea"
@@ -44,39 +44,34 @@
         </div>
         <div class="form-group">
           <span v-if="v$.categories.status.$error" style="color: red">
-              {{ v$.status.$errors[0].$message }} </span
-            ><br />
-        <lable for="Status">Status:</lable>
-        <input
-          type="radio"
-          value="Active"
-          id="Active"
-          v-model="state.categories.status"
-          name="status"
-        />
-        <label for="Active">Active</label>
+            {{ v$.status.$errors[0].$message }} </span
+          ><br />
+          <lable for="Status">Status:</lable>
+          <input
+            type="radio"
+            value="Active"
+            id="Active"
+            v-model="state.categories.status"
+            name="status"
+          />
+          <label for="Active">Active</label>
 
-        <input
-          type="radio"
-          value="Inactive"
-          id="Inactive"
-          v-model="state.categories.status"
-          name="status"
-        />
-        <label for="Inactive">Inactive</label><br /><br />
-
+          <input
+            type="radio"
+            value="Inactive"
+            id="Inactive"
+            v-model="state.categories.status"
+            name="status"
+          />
+          <label for="Inactive">Inactive</label><br /><br />
         </div>
-          <button
-            type="submit"
-            class="btn btn-outline-dark btn-rounded"
-            data-mdb-ripple-color="dark"
-            v-on:click="updateItem()"  
-            
-             
-          >
-            Update New Category
-          </button>
-  
+        <button
+          type="submit"
+          class="btn btn-outline-dark btn-rounded"
+          data-mdb-ripple-color="dark"
+        >
+          Update New Category
+        </button>
       </form>
     </div>
   </div>
@@ -84,14 +79,15 @@
 
 <script>
 // UPDATE DATA
-import navBar from '../navBar.vue'
+import navBar from "../navBar.vue";
 import axios from "axios";
 import useValidate from "@vuelidate/core";
-import { required,  } from "@vuelidate/validators";
+import { required, alpha } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
+import swal from "sweetalert";
 export default {
-  components:{
-   navBar
+  components: {
+    navBar,
   },
   setup() {
     const state = reactive({
@@ -104,8 +100,8 @@ export default {
     const rules = computed(() => {
       return {
         categories: {
-          name: { required,  },
-          description: { required },
+          name: { required, alpha },
+          description: { required, alpha },
           status: { required },
         },
       };
@@ -146,7 +142,7 @@ export default {
 
       this.v$.$validate();
       if (!this.v$.$error) {
-                      await axios.put(
+        await axios.put(
           " http://localhost:3000/posts/" + this.$route.params.id,
           {
             name: this.state.categories.name,
@@ -154,14 +150,12 @@ export default {
             status: this.state.categories.status,
           }
         );
-       
-        alert("form update ");
-       this.$router.push("/category/showcategory");
-       
+        this.$router.push("/category/showcategories");
+        swal("Good job!", "Item updated!", "success");
       } else {
-          
-           alert("please fill the form ");
-
+        // this.getCat()
+        //  this.$router.push("/category/updatecate");
+        swal("...Please fill the form!");
       }
     },
   },
